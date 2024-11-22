@@ -7,16 +7,22 @@ function App() {
   const [apiMessage, setApiMessage] = useState("No ha cargado");
 
   useEffect(() => {
-    console.log("ENDPOINT");
+    console.log(
+      "RUTA VARIABLE ENTORNO",
+      process.env.REACT_APP_API_BASE_URL || "NO EXISTE"
+    );
 
     const getApiInfo = async () => {
-      const response = await fetch(`http://localhost:3001/test`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://nfsd0624-backend-to-deploy.onrender.com/test`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
       const parsedResponse = await response.json();
       setApiMessage(parsedResponse.message);
     };
