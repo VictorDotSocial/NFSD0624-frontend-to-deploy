@@ -9,12 +9,12 @@ function App() {
   useEffect(() => {
     console.log(
       "RUTA VARIABLE ENTORNO",
-      process.env.REACT_APP_API_BASE_URL || "NO EXISTE"
+      import.meta.env.VITE_REACT_APP_API_BASE_URL || "NO EXISTE"
     );
 
     const getApiInfo = async () => {
       const response = await fetch(
-        `https://nfsd0624-backend-to-deploy.onrender.com/test`,
+        `${import.meta.env.VITE_REACT_APP_API_BASE_URL}/test`,
         {
           method: "GET",
           headers: {
